@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Legada Brochure Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Textures and Effects */
+        .wood-table {
+            background-color: #3e2723;
+            background-image: repeating-linear-gradient(45deg, #3e2723 0, #3e2723 2px, #4e342e 2px, #4e342e 4px);
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.7);
+            transition: all 0.5s ease;
+        }
+
+        .presentation-mode {
+            background-image: none;
+            background-color: #1a1a1a;
+            box-shadow: none;
+        }
+
+        .paper-texture {
+            background-color: #fcfbf7; /* Cream/Off-white */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+        }
+
+        .rust-texture {
+            background: linear-gradient(135deg, #8d4004 0%, #5d2906 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rust-texture::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+        }
+
+        .rust-texture::after {
+            content: '';
+            position: absolute;
+            top: 10%; left: 10%; right: 10%; bottom: 10%;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .book-shadow {
+            box-shadow: 
+                0 20px 30px -10px rgba(0,0,0,0.5), /* Drop shadow */
+                0 0 5px rgba(0,0,0,0.2); /* Edge definition */
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .presentation-mode .book-shadow {
+            box-shadow: 0 40px 60px -20px rgba(0,0,0,0.8);
+            transform: scale(1.05);
+        }
+
+        .spine-shadow {
+            background: linear-gradient(to right, 
+                rgba(0,0,0,0.05) 0%, 
+                rgba(0,0,0,0.2) 40%, 
+                rgba(0,0,0,0.3) 50%, 
+                rgba(0,0,0,0.2) 60%, 
+                rgba(0,0,0,0.05) 100%);
+        }
+
+        /* Typography Override */
+        .font-serif-custom { font-family: 'Playfair Display', serif; }
+        .font-sans-custom { font-family: 'Lato', sans-serif; }
+    </style>
+</head>
+<body id="main-body" class="wood-table min-h-screen flex items-center justify-center p-4 sm:p-8">
+
+    <!-- Brochure Container -->
+    <div id="brochure-container" class="relative w-full max-w-6xl aspect-[1.5/1] sm:aspect-[1.6/1] flex book-shadow rounded-sm overflow-hidden bg-white">
+        
+        <!-- Left Page: The Atmosphere (Gate Image) -->
+        <div class="w-1/2 h-full rust-texture flex items-center justify-center relative">
+            <!-- Simulated Laser Cut Logo Glow -->
+            <div class="absolute inset-0 bg-black opacity-20"></div>
+            <div class="relative z-10 text-white opacity-80 mix-blend-soft-light transform scale-150">
+               <!-- Zia Sun Symbol simulation using font awesome or just shapes -->
+               <div class="w-48 h-48 border-4 border-orange-200/30 rounded-full flex items-center justify-center">
+                   <span class="text-8xl font-serif-custom tracking-tighter text-orange-100/40">CL</span>
+               </div>
+            </div>
+            
+            <!-- Lighting effect -->
+            <div class="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-orange-500/20 to-transparent mix-blend-overlay"></div>
+        </div>
+
+        <!-- Spine Fold Effect -->
+        <div class="absolute left-1/2 top-0 bottom-0 w-8 -ml-4 z-20 spine-shadow pointer-events-none"></div>
+
+        <!-- Right Page: The Narrative (Text) -->
+        <div class="w-1/2 h-full paper-texture relative flex flex-col justify-between p-8 md:p-12 lg:p-16">
+            
+            <!-- Content Wrapper -->
+            <div class="flex flex-col h-full justify-center space-y-8">
+                
+                <!-- Header -->
+                <div class="text-center md:text-left space-y-2">
+                    <h2 class="font-serif-custom text-3xl md:text-4xl lg:text-5xl text-[#8d4004] tracking-wide leading-tight">
+                        BIENVENIDOS<br>A CASA
+                    </h2>
+                    <div class="w-16 h-1 bg-[#8d4004] mt-4 md:ml-1"></div>
+                </div>
+
+                <!-- Body Copy -->
+                <div class="font-sans-custom text-gray-700 text-sm md:text-base lg:text-lg leading-relaxed space-y-4 max-w-md">
+                    <p>
+                        Welcome to <span class="font-bold text-gray-900">Casa Legada</span>. Established in 2024 in the heart of Santa Fe, our home is built on the spirit of the high desert—where the air is crisp, the earth is red, and time moves a little slower.
+                    </p>
+                    <p>
+                        "Legada" means legacy. It is the footprint we leave behind and the traditions we carry forward. Whether you are wrapping yourself in the warmth of our waffle-weave robes after a long soak or gearing up for a day on the ranch in our rugged canvas workwear, we invite you to experience the texture of the Southwest.
+                    </p>
+                    <p class="italic text-gray-500 mt-2">
+                        This isn’t just a place to stay; it is a place to belong. Make yourself at home.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Footer / Branding Mark -->
+            <div class="absolute bottom-8 right-8 md:bottom-12 md:right-12 opacity-80">
+                <!-- Branding Iron Mark Simulation -->
+                <div class="flex flex-col items-center justify-center space-y-1">
+                    <div class="w-10 h-10 border-2 border-[#8d4004] rounded-full flex items-center justify-center p-1">
+                        <i class="fas fa-horse-head text-[#8d4004] text-lg"></i>
+                    </div>
+                    <span class="text-[10px] tracking-[0.2em] font-sans-custom font-bold text-[#8d4004]">EST. 2024</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- UI Overlay for context -->
+    <div id="ui-overlay" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur px-2 py-1.5 rounded-full shadow-lg border border-gray-200 flex items-center gap-3 transition-opacity duration-300">
+        <span class="text-xs text-gray-500 font-sans-custom px-2">Casa Legada Proof</span>
+        <div class="h-4 w-px bg-gray-300"></div>
+        <button onclick="togglePreview()" class="flex items-center gap-2 bg-[#8d4004] hover:bg-[#7a3703] text-white text-xs px-3 py-1.5 rounded-full font-sans-custom transition-colors">
+            <i class="fas fa-expand"></i> Live Preview
+        </button>
+    </div>
+
+    <script>
+        function togglePreview() {
+            const body = document.getElementById('main-body');
+            const overlay = document.getElementById('ui-overlay');
+            const btnIcon = overlay.querySelector('i');
+            const btnText = overlay.querySelector('button');
+
+            body.classList.toggle('presentation-mode');
+            
+            if (body.classList.contains('presentation-mode')) {
+                // In presentation mode
+                btnIcon.classList.remove('fa-expand');
+                btnIcon.classList.add('fa-compress');
+                btnText.innerHTML = '<i class="fas fa-compress"></i> Exit Preview';
+            } else {
+                // Normal mode
+                btnIcon.classList.remove('fa-compress');
+                btnIcon.classList.add('fa-expand');
+                btnText.innerHTML = '<i class="fas fa-expand"></i> Live Preview';
+            }
+        }
+    </script>
+
+</body>
+</html>
